@@ -1,0 +1,31 @@
+{
+  "name": "@imnotteixeira/covid-19-simulator-web",
+  "version": "0.0.1",
+  "description": "Web App for the covid-19 simulator https://github.com/imnotteixeira/covid-19-simulator.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imnotteixeira/covid-19-simulator-web.git"
+  },
+  "author": "Angelo Teixeira",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/imnotteixeira/covid-19-simulator-web/issues"
+  },
+  "homepage": "https://github.com/imnotteixeira/covid-19-simulator-web#readme",
+  "dependencies": {
+    "next": "9.3.6",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0"
+  }
+}
