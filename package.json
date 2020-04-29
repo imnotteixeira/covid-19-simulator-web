@@ -2,11 +2,11 @@
   "name": "@imnotteixeira/covid-19-simulator-web",
   "version": "0.0.1",
   "description": "Web App for the covid-19 simulator https://github.com/imnotteixeira/covid-19-simulator.js",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/imnotteixeira/covid-19-simulator-web#readme",
   "dependencies": {
+    "@imnotteixeira/covid-19-simulator": "^0.6.0",
+    "@nivo/line": "^0.61.1",
     "next": "9.3.6",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
