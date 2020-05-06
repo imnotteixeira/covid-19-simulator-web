@@ -1,17 +1,14 @@
 import React from "react";
 import { ResponsiveLineCanvas } from "@nivo/line";
 
-const DataVisualizer = ({ metricData }) => {
-    console.log("m", metricData);
-    return (
-        <div style={{ height: "500px" }}>
-            {metricData ?
-                <MyResponsiveLine data={metricData}/>
-                : <p>No Metrics yet..</p>
-            }
-        </div>
-    );
-};
+const DataVisualizer = ({ metricData }) => (
+    <div style={{ height: "500px" }}>
+        {metricData ?
+            <MyResponsiveLine data={metricData}/>
+            : <p>No Metrics yet..</p>
+        }
+    </div>
+);
 
 const MyResponsiveLine = ({ data }) => (
     <ResponsiveLineCanvas

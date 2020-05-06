@@ -7,11 +7,11 @@ const HomePage = () => {
     const [simulationState, setSimulationState] = useState(null);
     const [metricData, setMetricData] = useState(null);
     const [maxSteps, setMaxSteps] = useState(null);
-    console.log(simulationState);
     return (
         <>
             <DataInput setSimulationState={setSimulationState} setMaxSteps={setMaxSteps}/>
             <SimulationController
+                autoPlay={false}
                 simulationState={simulationState}
                 setSimulationState={setSimulationState}
                 maxSteps={maxSteps}
