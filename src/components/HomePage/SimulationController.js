@@ -17,9 +17,9 @@ const SimulationController = ({
 
             if (simulationState.ended) return;
 
-            setStep(simulationState.step);
             const newState = simulate(simulationState, maxSteps);
             setSimulationState(newState);
+            setStep(newState.step);
 
             const metrics = MetricsService.export().map(({ data, id }) => ({
                 id,
@@ -33,6 +33,7 @@ const SimulationController = ({
     useEffect(() => {
 
         if (simulationState && !simulationState.ended && simulationRunning && autoPlay) {
+
             simulateNextState();
         }
 
@@ -56,7 +57,7 @@ const SimulationController = ({
     return (
         <div>
             <p>
-                {`Step: ${step}`}
+                {`Day: ${step}`}
             </p>
             {autoPlay ?
                 <button

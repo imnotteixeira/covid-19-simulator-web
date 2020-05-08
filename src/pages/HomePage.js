@@ -9,9 +9,9 @@ const HomePage = () => {
     const [maxSteps, setMaxSteps] = useState(null);
     return (
         <>
-            <DataInput setSimulationState={setSimulationState} setMaxSteps={setMaxSteps}/>
+            <DataInput setSimulationState={setSimulationState} maxSteps={maxSteps} setMaxSteps={setMaxSteps}/>
             <SimulationController
-                autoPlay={false}
+                autoPlay
                 simulationState={simulationState}
                 setSimulationState={setSimulationState}
                 maxSteps={maxSteps}
