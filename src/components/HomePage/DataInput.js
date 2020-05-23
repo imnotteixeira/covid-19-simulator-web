@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { init } from "../../services/simulate";
+import { QuarantineTypes } from "@imnotteixeira/covid-19-simulator";
 import {
     makeStyles,
     Paper,
@@ -109,8 +110,13 @@ const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
             hygieneDisregard,
             hospitalCapacity: 100,
             incubationPeriod: 6,
-            infectionPeriod: 41,
+            infectionPeriod: 141,
             spreadRadius: 10,
+            quarantineType: QuarantineTypes.FIXED_PERCENTAGE,
+            quarantineEffectiveness: 0.5,
+            quarantinePercentage: 0.9,
+            quarantineDelay: 2,
+            quarantinePeriod: 15,
         });
 
         setSimulationState(simulationState);
