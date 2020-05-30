@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/imnotteixeira/covid-19-simulator-web#readme",
   "dependencies": {
-    "@imnotteixeira/covid-19-simulator": "^0.6.0",
+    "@imnotteixeira/covid-19-simulator": "^0.8.0",
     "@imnotteixeira/covid-19-simulator-ui-components": "^0.1.2",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",

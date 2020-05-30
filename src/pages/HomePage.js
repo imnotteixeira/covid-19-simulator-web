@@ -1,23 +1,36 @@
 import React, { useState } from "react";
-import DataInput from "../components/HomePage/DataInput";
 import SimulationController from "../components/HomePage/SimulationController";
 import DataVisualizer from "../components/HomePage/DataVisualizer";
+import InputView from "../components/HomePage/InputView";
 
 const HomePage = () => {
     const [simulationState, setSimulationState] = useState(null);
     const [metricData, setMetricData] = useState(null);
     const [maxSteps, setMaxSteps] = useState(null);
+
+    const [viewStep, setViewStep] = useState(0);
     return (
         <>
-            <DataInput setSimulationState={setSimulationState} maxSteps={maxSteps} setMaxSteps={setMaxSteps}/>
-            <SimulationController
-                autoPlay
-                simulationState={simulationState}
+            <InputView
+                activeStep={viewStep}
+                setActiveStep={setViewStep}
                 setSimulationState={setSimulationState}
                 maxSteps={maxSteps}
-                setMetricData={setMetricData}
+                setMaxSteps={setMaxSteps}
             />
-            <DataVisualizer simulationState={simulationState} metricData={metricData}/>
+
+            {viewStep === 1 &&
+                <SimulationController
+                    autoPlay
+                    simulationState={simulationState}
+                    setSimulationState={setSimulationState}
+                    maxSteps={maxSteps}
+                    setMetricData={setMetricData}
+                />
+            }
+            {viewStep > 0 &&
+                <DataVisualizer simulationState={simulationState} metricData={metricData}/>
+            }
         </>
     );
 };
