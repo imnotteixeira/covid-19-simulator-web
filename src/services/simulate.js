@@ -9,4 +9,4 @@ MetricsService.subscribe("carrier-count");
 MetricsService.subscribe("dead-count");
 MetricsService.subscribe("cured-count");
 MetricsService.subscribe("hospitalized-count");
-MetricsService.subscribe("healthy-count");
+// MetricsService.subscribe("healthy-count");

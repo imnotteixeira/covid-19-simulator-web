@@ -6,6 +6,7 @@ import {
     makeStyles,
     Grid,
     Button,
+    Collapse,
 } from "@material-ui/core";
 
 import HygieneDisregard from "./InputView/InputControllers/HygieneDisregard";
@@ -19,8 +20,15 @@ import TestRate from "./InputView/InputControllers/TestRate";
 import TestCooldown from "./InputView/InputControllers/TestCooldown";
 import QuarantineTypeSelector from "./InputView/InputControllers/QuarantineType";
 import MaxSteps from "./InputView/InputControllers/MaxSteps";
+import QuarantineEffectiveness from "./InputView/InputControllers/QuarantineEffectiveness";
+import QuarantinePercentage from "./InputView/InputControllers/QuarantinePercentage";
+import QuarantineDelay from "./InputView/InputControllers/QuarantineDelay";
+import QuarantinePeriod from "./InputView/InputControllers/QuarantinePeriod";
 
 const useStyles = makeStyles((theme) => ({
+    wrapper: {
+        padding: theme.spacing(4),
+    },
     gridWrapper: {
         padding: theme.spacing(2),
     },
@@ -30,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
+const DataInput = ({ onSimulationReady, maxSteps, setMaxSteps }) => {
 
     const classes = useStyles();
     const [hygieneDisregard, setHygieneDisregard] = useState(0);
@@ -43,10 +51,13 @@ const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
     const [testRate, setTestRate] = useState(0);
     const [testCooldown, setTestCooldown] = useState(1);
     const [quarantineType, setQuarantineType] = useState(QuarantineTypes.NONE);
-
+    const [quarantineEffectiveness, setQuarantineEffectiveness] = useState(0);
+    const [quarantinePercentage, setQuarantinePercentage] = useState(0);
+    const [quarantineDelay, setQuarantineDelay] = useState(0);
+    const [quarantinePeriod, setQuarantinePeriod] = useState(0);
     const [openHelper, setOpenHelper] = useState("");
 
-    const setInputs = () => {
+    const simulate = () => {
         const simulationState = init({
             populationSize,
             hospitalEffectiveness,
@@ -58,13 +69,14 @@ const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
             testRate: Math.floor(testRate * hospitalCapacityPercentage / 100),
             testCooldown,
             quarantineType,
-            quarantineEffectiveness: 0.5,
-            quarantinePercentage: 0.9,
-            quarantineDelay: 2,
-            quarantinePeriod: 15,
+            quarantineEffectiveness,
+            quarantinePercentage,
+            quarantineDelay,
+            quarantinePeriod,
         });
 
-        setSimulationState(simulationState);
+
+        onSimulationReady(simulationState);
     };
 
     const handleMaxStepsChange = (e) => {
@@ -96,7 +108,7 @@ const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
     };
 
     return (
-        <>
+        <div className={classes.wrapper}>
             <Grid container className={classes.gridWrapper} spacing={4}>
                 <Grid item xs={12} md={12}>
                     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -215,12 +227,63 @@ const DataInput = ({ setSimulationState, maxSteps, setMaxSteps }) => {
                         helpAnchorEl={anchorEl}
                     />
                 </Grid>
-
+                <Grid item xs={12} style={{ padding: 0 }}>
+                    <Collapse
+                        in={quarantineType !== QuarantineTypes.NONE}
+                    >
+                        <Grid container className={classes.gridWrapper} spacing={4}>
+                            <Grid item xs={12} md={6}>
+                                <QuarantineEffectiveness
+                                    value={quarantineEffectiveness}
+                                    onChange={handleSliderChange(setQuarantineEffectiveness)}
+                                    isHelpOpen={openHelper === "quarantineEffectiveness"}
+                                    onHelpClose={handleHelperClose("quarantineEffectiveness")}
+                                    onHelpOpen={handleHelperClick("quarantineEffectiveness")}
+                                    helpAnchorEl={anchorEl}
+                                />
+                            </Grid>
+                            {quarantineType === QuarantineTypes.FIXED_PERCENTAGE &&
+                            <>
+                                <Grid item xs={12} md={6}>
+                                    <QuarantinePercentage
+                                        value={quarantinePercentage}
+                                        onChange={handleSliderChange(setQuarantinePercentage)}
+                                        isHelpOpen={openHelper === "quarantinePercentage"}
+                                        onHelpClose={handleHelperClose("quarantinePercentage")}
+                                        onHelpOpen={handleHelperClick("quarantinePercentage")}
+                                        helpAnchorEl={anchorEl}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <QuarantineDelay
+                                        value={quarantineDelay}
+                                        onChange={handleSliderChange(setQuarantineDelay)}
+                                        isHelpOpen={openHelper === "quarantineDelay"}
+                                        onHelpClose={handleHelperClose("quarantineDelay")}
+                                        onHelpOpen={handleHelperClick("quarantineDelay")}
+                                        helpAnchorEl={anchorEl}
+                                    />
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <QuarantinePeriod
+                                        value={quarantinePeriod}
+                                        onChange={handleSliderChange(setQuarantinePeriod)}
+                                        isHelpOpen={openHelper === "quarantinePeriod"}
+                                        onHelpClose={handleHelperClose("quarantinePeriod")}
+                                        onHelpOpen={handleHelperClick("quarantinePeriod")}
+                                        helpAnchorEl={anchorEl}
+                                    />
+                                </Grid>
+                            </>
+                            }
+                        </Grid>
+                    </Collapse>
+                </Grid>
                 <Grid item xs={12}>
-                    <Button color="primary" variant="contained" onClick={setInputs}>Initialize</Button>
+                    <Button color="primary" variant="contained" onClick={simulate}>Simulate</Button>
                 </Grid>
             </Grid>
-        </>
+        </div>
     );
 };
 

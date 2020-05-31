@@ -9,18 +9,24 @@ const HomePage = () => {
     const [maxSteps, setMaxSteps] = useState(null);
 
     const [viewStep, setViewStep] = useState(0);
+
+    const onSimulationReady = (simulationState) => {
+        setSimulationState(simulationState);
+        setViewStep(1);
+    };
     return (
         <>
             <InputView
                 activeStep={viewStep}
                 setActiveStep={setViewStep}
-                setSimulationState={setSimulationState}
+                onSimulationReady={onSimulationReady}
                 maxSteps={maxSteps}
                 setMaxSteps={setMaxSteps}
             />
 
             {viewStep === 1 &&
                 <SimulationController
+                    autoStart
                     autoPlay
                     simulationState={simulationState}
                     setSimulationState={setSimulationState}

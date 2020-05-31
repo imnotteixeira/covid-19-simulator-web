@@ -7,10 +7,11 @@ const SimulationController = ({
     maxSteps,
     setMetricData,
     autoPlay,
+    autoStart,
 }) => {
 
     const [step, setStep] = useState(0);
-    const [simulationRunning, setSimulationRunning] = useState(false);
+    const [simulationRunning, setSimulationRunning] = useState(autoStart);
 
     const simulateNextState = useCallback(
         () => {
@@ -60,6 +61,7 @@ const SimulationController = ({
                 {`Day: ${step}`}
             </p>
             {autoPlay ?
+                !autoStart &&
                 <button
                     onClick={startSimulation}
                     disabled={!simulationState || (simulationRunning && !simulationState.ended)}

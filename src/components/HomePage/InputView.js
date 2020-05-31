@@ -3,12 +3,12 @@ import ProgressSteps from "./InputView/ProgressSteps";
 import DataInput from "./DataInput";
 
 
-const InputView = ({ maxSteps, setMaxSteps, setSimulationState }) => (
+const InputView = ({ maxSteps, setMaxSteps, onSimulationReady }) => (
     <React.Fragment>
 
         <ProgressSteps activeStep={0}/>
         <DataInput
-            setSimulationState={setSimulationState}
+            onSimulationReady={onSimulationReady}
             maxSteps={maxSteps}
             setMaxSteps={setMaxSteps}
         />
