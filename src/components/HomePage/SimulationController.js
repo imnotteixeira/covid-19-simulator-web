@@ -8,6 +8,7 @@ const SimulationController = ({
     setMetricData,
     autoPlay,
     autoStart,
+    onSimulationEnded,
 }) => {
 
     const [step, setStep] = useState(0);
@@ -40,15 +41,10 @@ const SimulationController = ({
 
         if (simulationState && simulationState.ended) {
             setSimulationRunning(false);
+            onSimulationEnded();
         }
 
-    }, [
-        step,
-        simulationState,
-        simulationRunning,
-        autoPlay,
-        simulateNextState,
-    ]);
+    }, [step, simulationState, simulationRunning, autoPlay, simulateNextState, onSimulationEnded]);
 
     const startSimulation = () => {
         setSimulationRunning(true);
@@ -57,9 +53,6 @@ const SimulationController = ({
 
     return (
         <div>
-            <p>
-                {`Day: ${step}`}
-            </p>
             {autoPlay ?
                 !autoStart &&
                 <button
