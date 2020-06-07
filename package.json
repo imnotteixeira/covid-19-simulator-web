@@ -1,6 +1,6 @@
 {
   "name": "@imnotteixeira/covid-19-simulator-web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Web App for the covid-19 simulator https://github.com/imnotteixeira/covid-19-simulator.js",
   "main": "server.js",
   "scripts": {
