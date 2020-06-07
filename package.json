@@ -21,7 +21,7 @@
   "homepage": "https://github.com/imnotteixeira/covid-19-simulator-web#readme",
   "dependencies": {
     "@imnotteixeira/covid-19-simulator": "^0.8.2",
-    "@imnotteixeira/covid-19-simulator-ui-components": "^0.1.2",
+    "@imnotteixeira/covid-19-simulator-ui-components": "^0.2.0",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "@nivo/line": "^0.61.1",
