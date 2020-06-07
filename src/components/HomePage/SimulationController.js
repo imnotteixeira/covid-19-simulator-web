@@ -23,10 +23,7 @@ const SimulationController = ({
             setSimulationState(newState);
             setStep(newState.step);
 
-            const metrics = MetricsService.export().map(({ data, id }) => ({
-                id,
-                data: data.map((val, i) => ({ x: i, y: val })),
-            }));
+            const metrics = MetricsService.export();
             setMetricData(metrics);
         },
         [maxSteps, simulationState, setSimulationState, setMetricData],

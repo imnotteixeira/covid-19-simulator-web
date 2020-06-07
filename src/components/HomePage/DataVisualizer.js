@@ -2,20 +2,27 @@ import React from "react";
 import { GeneralChart, MatrixHeatMap } from "@imnotteixeira/covid-19-simulator-ui-components";
 import { Grid } from "@material-ui/core";
 
+const GENERAL_CHART_METRIC_IDS = [
+    "carrier-count",
+    "dead-count",
+    "cured-count",
+    "hospitalized-count",
+];
+
 const DataVisualizer = ({ metricData, simulationState }) => {
 
-    const carriersHistory = metricData
-        ? metricData.find((m) => m.id === "carriers-history").data.map((s) => s.y)
-        : [];
+    const carriersHistory = metricData ? metricData["carriers-history"] : [];
 
-    const generalChartMetrics = metricData
-        ? metricData.filter((a) => [
-            "carrier-count",
-            "dead-count",
-            "cured-count",
-            "hospitalized-count",
-        ].includes(a.id))
-        : [];
+    const generalChartMetrics = [];
+    if (metricData)
+        Object.keys(metricData).forEach((metricId) => {
+            if (GENERAL_CHART_METRIC_IDS.includes(metricId)) {
+                generalChartMetrics.push({
+                    id: metricId,
+                    data: metricData[metricId].map((val, i) => ({ x: i, y: val })),
+                });
+            }
+        });
 
     return (
         <Grid container style={{ height: "500px" }}>
