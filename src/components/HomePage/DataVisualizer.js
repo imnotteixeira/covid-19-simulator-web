@@ -1,7 +1,8 @@
 import React from "react";
 import { GeneralChart, MatrixHeatMap } from "@imnotteixeira/covid-19-simulator-ui-components";
+import { Grid } from "@material-ui/core";
 
-const DataVisualizer = ({ metricData }) => {
+const DataVisualizer = ({ metricData, simulationState }) => {
 
     const carriersHistory = metricData
         ? metricData.find((m) => m.id === "carriers-history").data.map((s) => s.y)
@@ -17,17 +18,28 @@ const DataVisualizer = ({ metricData }) => {
         : [];
 
     return (
-        <div style={{ height: "500px" }}>
+        <Grid container style={{ height: "500px" }}>
             {metricData ?
                 <>
-                    <GeneralChart data={generalChartMetrics}/>
-                    {carriersHistory.length > 0 &&
-                        <MatrixHeatMap values={carriersHistory} />
-                    }
+                    <Grid item xs={12} md={6} style={{ height: "500px" }}>
+                        <GeneralChart data={generalChartMetrics}/>
+                    </Grid>
+                    <Grid item xs={12} md={6} style={{ height: "500px" }}>
+                        {carriersHistory.length > 0 &&
+                        <MatrixHeatMap
+                            values={simulationState.ended ?
+                                carriersHistory
+                                : carriersHistory[carriersHistory.length - 1]
+                            }
+                            showLatestStep={!simulationState.ended}
+                        />
+                        }
+                    </Grid>
                 </>
                 : <p>No Metrics yet..</p>
             }
-        </div>);
+        </Grid>
+    );
 };
 
 
