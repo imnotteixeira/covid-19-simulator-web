@@ -66,13 +66,14 @@ const DataInput = ({ onSimulationReady, maxSteps, setMaxSteps }) => {
             incubationPeriod,
             infectionPeriod,
             spreadRadius,
-            testRate: Math.floor(testRate * hospitalCapacityPercentage / 100),
+            testRate: Math.floor(populationSize * testRate / 100),
             testCooldown,
             quarantineType,
             quarantineEffectiveness,
             quarantinePercentage,
             quarantineDelay,
             quarantinePeriod,
+            populationPreset: 2,
         });
 
 

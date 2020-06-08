@@ -3,7 +3,7 @@ import SimulationController from "../components/HomePage/SimulationController";
 import DataVisualizer from "../components/HomePage/DataVisualizer";
 import InputView from "../components/HomePage/InputView";
 import ProgressSteps from "../components/HomePage/InputView/ProgressSteps";
-import { Dialog, Typography, Button, DialogTitle, DialogContent } from "@material-ui/core";
+import { Dialog, Typography, Button, DialogTitle, DialogContent, Paper } from "@material-ui/core";
 
 const HomePage = () => {
     const [simulationState, setSimulationState] = useState(null);
@@ -33,8 +33,10 @@ const HomePage = () => {
                 fullScreen
                 onExited={onInputReady.current}
             >
-                <DialogTitle>
-                    <ProgressSteps activeStep={viewStep}/>
+                <DialogTitle style={{ paddingBottom: 0 }}>
+                    <Paper elevation={4}>
+                        <ProgressSteps activeStep={viewStep}/>
+                    </Paper>
                 </DialogTitle>
                 <DialogContent>
                     <InputView
