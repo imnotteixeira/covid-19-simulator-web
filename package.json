@@ -1,6 +1,6 @@
 {
   "name": "@imnotteixeira/covid-19-simulator-web",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Web App for the covid-19 simulator https://github.com/imnotteixeira/covid-19-simulator.js",
   "main": "server.js",
   "scripts": {
@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/imnotteixeira/covid-19-simulator-web.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Angelo Teixeira",
   "license": "GPL-3.0",
   "bugs": {
@@ -20,9 +23,9 @@
   },
   "homepage": "https://github.com/imnotteixeira/covid-19-simulator-web#readme",
   "dependencies": {
-    "@imnotteixeira/covid-19-simulator": "^0.8.2",
+    "@imnotteixeira/covid-19-simulator": "^0.9.1",
     "@imnotteixeira/covid-19-simulator-ui-components": "^0.3.0",
-    "@material-ui/core": "^4.9.13",
+    "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
     "@nivo/line": "^0.61.1",
     "react": "^16.8.0",
@@ -33,9 +36,6 @@
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
     "@babel/core": "7.5.5",
     "@svgr/webpack": "4.3.2",
     "@typescript-eslint/eslint-plugin": "1.13.0",
@@ -48,6 +48,7 @@
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
+    "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.0.1",
     "eslint-loader": "2.2.1",
     "eslint-plugin-babel": "^5.3.0",
@@ -55,6 +56,8 @@
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jest": "^22.14.1",
     "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.1",
     "html-webpack-plugin": "4.0.0-beta.5",
@@ -78,7 +81,7 @@
     "ts-pnp": "1.1.2",
     "url-loader": "2.1.0",
     "webpack": "4.39.1",
-    "webpack-dev-server": "3.2.1",
+    "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.3.1"
   },
