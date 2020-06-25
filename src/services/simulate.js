@@ -5,11 +5,11 @@ export const init = initSimulation;
 export const simulate = simulateStep;
 export const MetricsService = SimulationMetricsService;
 
-MetricsService.subscribe("carrier-count");
-MetricsService.subscribe("dead-count");
-MetricsService.subscribe("cured-count");
+MetricsService.subscribe("carrier-absolute-count");
+MetricsService.subscribe("dead-absolute-count");
+MetricsService.subscribe("cured-absolute-count");
 MetricsService.subscribe("hospitalized-count");
-MetricsService.subscribe("confirmed-carrier-count");
+MetricsService.subscribe("confirmed-carrier-cumulative-count");
 
 MetricsService.subscribe("carriers-history");
 

@@ -73,7 +73,8 @@ const DataInput = ({ onSimulationReady, maxSteps, setMaxSteps }) => {
             quarantinePercentage,
             quarantineDelay,
             quarantinePeriod,
-            populationPreset: 2,
+            numberOfZones: 1,
+            populationPreset: "GERMANY",
         });
 
 
